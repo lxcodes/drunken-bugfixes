@@ -1,0 +1,12 @@
+---
+  - hosts: all
+    pre_tasks:
+      - name: update apt if needed
+        apt: update_cache=yes cache_valid_time=3600
+    tasks:
+    - name: apt-get upgrade
+      apt: upgrade=full
+    - name: Install openjdk 7
+      apt: pkg=openjdk-7-jdk state=installed
+    - name: Install maven
+      apt: pkg=maven state=installed
