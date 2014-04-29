@@ -105,10 +105,10 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 
 	<cfset variables.iniPath = "#variables.basedir#/config/settings.ini.cfm" />
 
-	<cfdump var="#variables.iniPath#" />
-	<cfabort>
-
 	<cfset variables.iniSections=getProfileSections(variables.iniPath)>
+
+	<cfdump var="#variables.iniSections#" />
+	<cfabort>
 
 	<cfset variables.iniProperties=structNew()>
 	<cfloop list="#variables.iniSections.settings#" index="variables.p">
