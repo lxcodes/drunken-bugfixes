@@ -108,6 +108,8 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 	<cfset variables.iniSections=getProfileSections(variables.iniPath)>
 
 	<cfset variables.iniProperties=structNew()>
+	<cfdump var="#variables.iniProperties#" />
+	<cfabort>
 	<cfloop list="#variables.iniSections.settings#" index="variables.p">
 		<cfset variables.iniProperties[variables.p]=getProfileString("#variables.basedir#/config/settings.ini.cfm","settings",variables.p)>
 		<cfif left(variables.iniProperties[variables.p],2) eq "${"
