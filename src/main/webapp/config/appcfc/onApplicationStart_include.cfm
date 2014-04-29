@@ -69,8 +69,6 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 <!--- do a settings setup check --->
 <cfif NOT application.setupComplete OR (not application.appInitialized or structKeyExists(url,application.appReloadKey) )>
 	<cfif getProfileString( variables.basedir & "/config/settings.ini.cfm", "settings", "mode" ) eq "production">
-		<cfdump var="#getProfileString( variables.basedir & "/config/settings.ini.cfm", "settings", "mode" )#" />
-		<cfabort>
 		<cfif directoryExists( variables.basedir & "/config/setup" )>
 			<cfset application.setupComplete = false />
 			<!--- check the settings --->
@@ -106,6 +104,9 @@ version 2 without this exception.  You may, if you choose, apply this exception 
 	<cfset request.muraShowTrace=true>
 
 	<cfset variables.iniPath = "#variables.basedir#/config/settings.ini.cfm" />
+
+	<cfdump var="#variables.iniPath#" />
+	<cfabort>
 
 	<cfset variables.iniSections=getProfileSections(variables.iniPath)>
 
